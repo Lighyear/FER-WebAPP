@@ -58,7 +58,7 @@ class EmotionDetector(VideoTransformerBase):
     def transform(self, frame):
         img = frame.to_ndarray(format="bgr24")
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-        faces = self.face_cascade.detectMultiScale(gray, 1.1, 5, minSize=(50, 50))
+        faces = self.face_cascade.detectMultiScale(gray, 1.1, 5, minSize=(35, 35))
 
         for (x, y, w, h) in faces:
             face = gray[y:y+h, x:x+w]
