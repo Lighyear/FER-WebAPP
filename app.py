@@ -130,7 +130,13 @@ def emotion_detection_page(model, face_cascade):
     webrtc_streamer(
         key="emotion-detect",
         video_processor_factory=lambda: EmotionDetector(model, face_cascade),
-        media_stream_constraints={"video": True, "audio": False},
+        media_stream_constraints={
+            "video": {
+                "width": {"ideal": 480},
+                "height": {"ideal": 360}
+            },
+            "audio": False
+        },
         async_processing=True
     )
 
